@@ -1,0 +1,138 @@
+<div id="appContainer">
+    <div class="row align-items-center h-100 w-100">
+        <div class="col-md-7 col-sm-7 mx-auto">
+            <div id="cardStyle" class="card justify-content-center">
+                <div>
+                    <button class="btn btn-light" type="button" style="width:50%;" (click)="goToLogin()">Login</button>
+                    <button class="btn btn-light" type="button" style="width:50%;">Register</button>
+                </div>
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <form [formGroup]="registrationForm" (ngSubmit)="registerButtonAction()">
+                                    <div *ngIf="!registrationInitialized">
+                                        <div class="form-group">
+                                            <label for="name" class="fa fa-user"></label>
+                                            <input type="text" placeholder="Enter your name" formControlName="name">
+                                            <span class="text-danger" *ngIf="registrationForm.controls['name'].errors && registrationForm.controls['name'].touched">
+                                                <br>Name is required
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="id" class="fa fa-user"></label>
+                                            <input type="text" placeholder="Enter your assossiate id" formControlName="associateid">
+                                            <span class="text-danger" *ngIf="registrationForm.controls['associateid'].errors && registrationForm.controls['associateid'].touched">
+                                                <br>Assossiate id is required
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mobile" class="fa fa-mobile"></label>
+                                            <input type="text" placeholder="Enter your mobile number" formControlName="mobile">
+                                            <span class="text-danger" *ngIf="registrationForm.controls['mobile'].errors && registrationForm.controls['mobile'].touched">
+                                                <br>Mobile is required
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="fa fa-envelope"></label>
+                                            <input type="email" placeholder="Enter your email id" formControlName="email">
+                                            <span class="text-danger" *ngIf="registrationForm.controls['email'].errors && registrationForm.controls['email'].touched">
+                                                <br>Must be an Email
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="fa fa-lock"></label>
+                                            <input type="password" placeholder="Enter password" formControlName="password">
+                                            <span class="text-danger" *ngIf="registrationForm.controls['password'].errors && registrationForm.controls['password'].touched">
+                                                <br>Please follow password pattern
+                                            </span>
+                                        </div>            
+                                        <div class="text-center">
+                                            <button id="submitButton" type="button" (click)="initiateRegistration()" class="btn btn-primary" [disabled]="!registrationForm.valid">
+                                                Next
+                                            </button>
+                                        </div>
+                                    </div>
+                    
+                                <div *ngIf="registrationInitialized">
+                                    <h5 class="d-flex justify-content-center">Select Skills Ratings</h5>
+                                    <div class="col-12">
+                                        <div class = "row">
+                                            <div class="col-6">
+                                                <h5>Techincal Skills</h5>
+                                                <div class="col-12" formArrayName="techskills">
+                                                    <div *ngFor="let skills of techskills.controls; let i=index">
+                                                        <div [formGroupName]="i">
+                                                            <div class = "row">
+                                                                <div class="col-4">
+                                                                    <label>{{techskillsToAdd[i].topic}}</label>
+                                                                    <!-- Test {{i}} -->
+                                                                    <!-- <input type="text" formControlName="topic" placeholder="{{techskillsToAdd[i].topic}}"> -->
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="range" min="0" max="20" value="0"
+                                                                    formControlName="rating"
+                                                                    oninput="this.nextElementSibling.value = this.value">
+                                                                    <output>{{techskillsToAdd[i].rating}}</output>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>  
+                                                </div>      
+                                            </div>
+                                            <div class="col-6">
+                                                <h5>Non Techincal Skills</h5>
+                                                <div class="col-12" formArrayName="nontechskills">
+                                                    <div *ngFor="let skills of nontechskills.controls; let i=index">
+                                                        <div [formGroupName]="i">
+                                                            <div class = "row">
+                                                                <div class="col-4">
+                                                                    <label>{{nontechskillsToAdd[i].topic}}</label>
+                                                                    <!-- Test {{i}} -->
+                                                                    <!-- <input type="text" formControlName="topic" placeholder="{{techskillsToAdd[i].topic}}"> -->
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input
+                                                                    type="range" min="0" max="20" value="0"
+                                                                    formControlName="rating"
+                                                                    oninput="this.nextElementSibling.value = this.value">
+                                                                    <output
+                                                                    >{{nontechskillsToAdd[i].rating}}</output>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>  
+                                                </div>  
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="text-center">
+                                        <button id="submitButton" type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">
+                                            Register
+                                        </button>
+                                    </div>
+                                </div>
+                                <div *ngIf="successFlag">
+                                    <div class="text-success" >
+                                        {{registrationSuccessID}}
+                                    </div>
+                                    <div class="text-success" >
+                                        {{secondMsg}}
+                                    </div>
+                                    <div>
+                                        <button id="nextButton" type="button" (click)="nextButtonAction()" class="btn btn-primary">
+                                            Next
+                                        </button>
+
+                                    </div>
+                                </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

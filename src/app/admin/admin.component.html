@@ -1,0 +1,114 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" style="padding-left: 10px;">Skill Tracker Admin Search</a>
+    <button type="button" class="btn btn-light" routerLink="/login">Logout</button>
+</nav>
+
+<div class="container-fluid g-0">
+    <main class="black-borde">
+        <div class="toolbarr">
+            <div class="search-associates row" style="margin: 10px;">
+                <mat-label style="width: 30%; text-align: left; font-size: x-large;" for="searchWithName">NAME</mat-label>
+                <input style="width: 70%;" id="searchWithName" type="search" class="form-control" placeholder="Search with Associate Name" [(ngModel)]="searchNameText">
+            </div>
+            <div class="search-associates row" style="margin: 10px;">
+                <mat-label style="width: 30%; text-align: left; font-size: x-large;" for="searchWithAssociateID">Associate ID</mat-label>
+                <input style="width: 70%;" id="searchWithAssociateID" type="search" class="form-control" placeholder="Search with Associate ID" [(ngModel)]="searchAssociateIDText">
+            </div>
+            <div class="search-associates row" style="margin: 10px;">
+                <mat-label style="width: 30%; text-align: left; font-size: x-large;" for="searchWithSkill">Skill</mat-label>
+                <mat-select style="width: 70%;" id="searchWithSkill" type="select" class="form-control" placeholder="Pick a Skill" [(ngModel)]="searchSkillOption">
+                    <mat-option *ngFor="let values of allSkillData" [value]="values.skillname">{{values.skillname}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="associates">
+            <div class="row mt-5" *ngIf="!this.searchInitialized">
+                <div class="col text-center">
+                    <span class="text-secondary fs-2 fw-bold fst-italic">Please initiate search with above options</span>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col">
+                    <button class="btn btn-primary" (click)="searchButtonAction()">SEARCH</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<!-- After Search is Initialized -->
+
+
+<div *ngIf="this.searchInitialized">
+
+    <div class="container" style="padding-top: 30px;padding-left: 40px;">
+        <div *ngFor="let item of obtainedSearchResult; index as i">
+            <div class="container-fluid g-0 p-2">
+                <div class="row g-0">
+                    <div class="col ps-2">
+                        <div class="row g-0 mt-3">
+                            <div class="col-md" style=" margin: 5px;">
+                                <table class="table table-hover mx-auto" style="border: 1px solid black;">
+                                    <thead class="text-center fs-5 fst-italic text-secondary">
+                                        <tr>
+                                            <td colspan="2">Personal Details</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Full Name</td>
+                                            <td>{{item.name}}</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Associate ID</td>
+                                            <td>{{item.associateid}}</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>{{item.email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mobile</td>
+                                            <td>{{item.mobile}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col" style=" margin: 5px;">
+                                <table class="table table-hover mx-auto" style="border: 1px solid black;">
+                                    <thead class="text-center fs-5 fst-italic text-secondary">
+                                        <tr>
+                                            <td colspan="2">Technical Skills</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let value of item.technical_skills">
+                                            <td>{{value.topic}}</td>
+                                            <td>{{value.rating}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col" style=" margin: 5px;">
+                                <table class="table table-hover mx-auto" style="border: 1px solid black;">
+                                    <thead class="text-center fs-5 fst-italic text-secondary">
+                                        <tr>
+                                            <td colspan="2">Non Technical Skills</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let value of item.non_technical_skills">
+                                            <td>{{value.topic}}</td>
+                                            <td>{{value.rating}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</div>

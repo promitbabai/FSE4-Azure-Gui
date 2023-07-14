@@ -1,0 +1,118 @@
+.black-border{
+    border: 1px solid black;
+}
+main{
+    width:90%;
+    margin:3rem auto 0px;
+}
+.toolbar{
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.add-associate{
+    width:20%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-associates{
+    width:50%;
+    height: 90%;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px rgba(34,34,34,0.5);
+}
+.search-associates input{
+    width:100%;
+    height: 100%;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+}
+app-associate{
+    display:block;
+    width:75%;
+    margin:0px auto;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 5px rgba(34,34,34,0.5);
+}
+.form-heading{
+    border-top:1px solid black;
+}
+.form-heading h6{
+    text-align: center;
+    background-color: white;
+    width:200px;
+    transform: translateY(-50%);
+}
+
+.black-border{
+    border: 1px solid black;
+}
+img{
+    width:100%;
+    border-radius:1rem;
+}
+table{
+    width:90%;
+}
+.name{
+    font-size: 2rem;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 3px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 0px 2rem;
+}
+label{
+    color:grey;
+}
+.form-group{
+    margin-top:20px;
+}
+form{
+    padding:10px;
+}
+#submitButton{
+    margin:25px;
+    width:40%;
+}
+
+body{
+    background: #f7f7ff;
+    margin-top: 20px;
+}
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid transparent;
+    border-radius: .25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%)
+}
+.me-2{
+    margin-right: .5rem!important;
+}
+
+html,body{
+    height: 100%;
+    margin:0px;
+}
+
+#appContainer{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(251,194,235,1),rgba(179,202,243,1));
+}
+#cardStyle{
+    background-color: rgb(255,255,255,0.4);
+    box-shadow: 5px 3px 10px 5px gray;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

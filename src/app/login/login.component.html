@@ -1,0 +1,41 @@
+<div id="appContainer">
+    <div class="row align-items-center h-100 w-100">
+        <div class="col-md-4 col-sm-4 mx-auto">
+            <div id="cardStyle" class="card justify-content-center">
+                <div>
+                    <button class="btn btn-light" type="button" style="width:50%;">Login</button>
+                    <button class="btn btn-light" type="button" style="width:50%;" (click)="goToRegister()">Register</button>
+                </div>
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <form [formGroup]="loginForm" (ngSubmit)="loginButtonAction()">
+                                    <div class="form-group">
+                                        <label for="associateID" class="fa fa-user"></label>
+                                        <input type="text" placeholder="Enter your Assossiate id" formControlName="associateID">
+                                        <span class="text-danger" *ngIf="loginForm.controls['associateID'].errors && loginForm.controls['associateID'].touched">
+                                            <br>Assossiate id is required
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="associatePassword" class="fa fa-lock"></label>
+                                        <input type="password" placeholder="associatePassword" formControlName="associatePassword">
+                                        <span class="text-danger" *ngIf="loginForm.controls['associatePassword'].errors && loginForm.controls['associatePassword'].touched">
+                                            <br>Invalid Password
+                                        </span>
+                                    </div>
+                                    <div class="text-center">
+                                        <button id="submitButton" type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+                                    </div>
+                                    <div class="text-center text-success" *ngIf="loginSuccess">Login Success</div>
+                                    <div class="text-center text-success" *ngIf="loginError">{{loginErrorMessage}}</div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

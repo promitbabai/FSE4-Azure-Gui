@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "name": "Srinjoy Dutta",
+      "id": "CTS2141607",
+      "mobile": "9088981032",
+      "email": "srinjoy.dutta.773@gmail.com",
+      "password": "S@it0950",
+      "html": "16",
+      "angular": "10",
+      "react": "14",
+      "spring": "13",
+      "restful": "16",
+      "hibernate": "13",
+      "git": "15",
+      "docker": "14",
+      "jenkins": "13",
+      "aws": "16",
+      "spoken": "17",
+      "communication": "17",
+      "aptitude": "16"
+    },
+    {
+      "name": "Shubham Dutta",
+      "id": "CTS2141608",
+      "mobile": "9865478965",
+      "email": "shubhamdutta@gmail.com",
+      "password": "S@it0950",
+      "html": "17",
+      "angular": "16",
+      "react": "19",
+      "spring": "16",
+      "restful": "11",
+      "hibernate": "7",
+      "git": "6",
+      "docker": "8",
+      "jenkins": "11",
+      "aws": "18",
+      "spoken": "19",
+      "communication": "18",
+      "aptitude": "20"
+    }
+  ],
+  "comments": [
+    {
+      "id":"CTS2141609",
+      "password":"S@it0950",
+      "role":"Admin"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,0 +1,122 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" style="padding-left: 10px;">Welcome Aboard</a>
+    <button type="button" class="btn btn-light" routerLink="/login">Logout</button>
+</nav>
+<div class="container" style="padding-top: 30px;padding-left: 40px;">
+    <!-- <div class="main-body">
+    </div> -->
+    <form [formGroup]="updateProfileForm">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input formControlName="name"  type="text" class="form-control" placeholder="Full name"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input formControlName="email" type="email" class="form-control" placeholder="Email"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Mobile</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input formControlName="mobile" type="text" class="form-control" placeholder="Mobile"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Assossiate ID</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input formControlName="associateid" type="text" class="form-control" placeholder="Assossiate id"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="d-flex justify-content-center">Select Skills Ratings</h5>
+                            <div class="col-12">
+                                <div class = "row">
+                                    <div class="col-6">
+                                        <h5>Techincal Skills</h5>
+                                        <div class="col-12" formArrayName="techskills">
+                                            <div *ngFor="let skills of techskills.controls; let i=index">
+                                                <div [formGroupName]="i">
+                                                    <div class = "row">
+                                                        <div class="col-4">
+                                                            <label>{{techskillsToAdd[i].topic}}</label>
+                                                            <!-- Test {{i}} -->
+                                                            <!-- <input type="text" formControlName="topic" placeholder="{{techskillsToAdd[i].topic}}"> -->
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <input type="range" min="0" max="20" value="0"
+                                                            formControlName="rating"
+                                                            oninput="this.nextElementSibling.value = this.value">
+                                                            <output>{{techskillsToAdd[i].rating}}</output>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        </div>      
+                                    </div>
+                                    <div class="col-6">
+                                        <h5>Non Techincal Skills</h5>
+                                        <div class="col-12" formArrayName="nontechskills">
+                                            <div *ngFor="let skills of nontechskills.controls; let i=index">
+                                                <div [formGroupName]="i">
+                                                    <div class = "row">
+                                                        <div class="col-4">
+                                                            <label>{{nontechskillsToAdd[i].topic}}</label>
+                                                            <!-- Test {{i}} -->
+                                                            <!-- <input type="text" formControlName="topic" placeholder="{{techskillsToAdd[i].topic}}"> -->
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <input type="range" min="0" max="20" value="0"
+                                                            formControlName="rating"
+                                                            oninput="this.nextElementSibling.value = this.value">
+                                                            <output>{{nontechskillsToAdd[i].rating}}</output>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        </div>  
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-left: 20%;">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-9 text-secondary">
+                            <input type="button" class="btn btn-primary px-4" value="Save Changes" (click)="updateButtonAction()">.
+                        </div>
+                        <div class="text-center text-success" *ngIf="updateSuccess">Update Success</div>
+                        <div class="text-center text-success" *ngIf="updateError">{{updateErrorMessage}}</div>
+                        <div class="row">
+                            <div class="col-4">&nbsp;</div>
+                            <div class="col-4">&nbsp;</div>
+                            <div class="col-4">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
