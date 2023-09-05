@@ -7,12 +7,16 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class SharedService {
 
-  base_url_cloud_search:string = "https://fse4-azure-search.azurewebsites.net/skill-tracker/api/v1/admin/";
-  base_url_cloud_maintain:string = "https://fse4-azure-maintain.azurewebsites.net/skill-tracker/api/v1/engineer/";
+  
+  base_url_cloud_search_container_apps:string = "https://con-app-skiltracker-search.gentlefield-d9a4639f.southeastasia.azurecontainerapps.io/skill-tracker/api/v1/admin/getAllAssociates";
+  base_url_cloud_search_app_service:string = "https://fse4-azure-search.azurewebsites.net/skill-tracker/api/v1/admin/";
+  base_url_cloud_maintain_app_service:string = "https://fse4-azure-maintain.azurewebsites.net/skill-tracker/api/v1/engineer/";
 
   base_url_local_search:string = "http://localhost:8090/skill-tracker/api/v1/admin/";
   base_url_local_maintain:string = "http://localhost:8091/skill-tracker/api/v1/engineer/";
   
+  final_base_url_search:string = this.base_url_local_search;
+  final_base_url_maintain:string = this.base_url_local_maintain;
   final_service_url:string = "";
 
 
@@ -51,8 +55,7 @@ export class SharedService {
     // console.log(registerRequestModel);
     // return registerRequestModel;
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_maintain + "add-profile";
-    this.final_service_url = this.base_url_cloud_maintain + "add-profile";
+    this.final_service_url = this.final_base_url_maintain + "add-profile";
     console.log('########## - REST SERVICE CALL add-profile = ' + this.final_service_url);
     return this.http.post(this.final_service_url, registerRequestModel, this.options);
   }
@@ -63,8 +66,7 @@ export class SharedService {
  */
   getAllSkills(): Observable<any>{
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_maintain + "getAllSkills";
-    this.final_service_url = this.base_url_cloud_maintain + "getAllSkills";
+    this.final_service_url = this.final_base_url_maintain + "getAllSkills";
     console.log('########## - REST SERVICE CALL getAllSkills = ' + this.final_service_url);
     return this.http.get(this.final_service_url);
   }
@@ -79,8 +81,7 @@ export class SharedService {
     console.log('Invoking the Auth-Server URL, INPARAMS are shown below');
     console.log(authRequest);
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_maintain + "authenticate";
-    this.final_service_url = this.base_url_cloud_maintain + "authenticate";
+    this.final_service_url = this.final_base_url_maintain + "authenticate";
     console.log('########## - REST SERVICE CALL authenticateUserCredentials = ' + this.final_service_url);
     return this.http.post(this.final_service_url ,authRequest, this.options);
   }
@@ -101,8 +102,7 @@ export class SharedService {
     console.log('Shared service - getUserDetailsWithToken');  
 
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_maintain + "getUserDetails";
-    this.final_service_url = this.base_url_cloud_maintain + "getUserDetails";
+    this.final_service_url = this.final_base_url_maintain + "getUserDetails";
     console.log('########## - REST SERVICE CALL getUserDetails = ' + this.final_service_url);
     return this.http.get(this.final_service_url, {params});
   }
@@ -120,8 +120,7 @@ export class SharedService {
     .set('associateID',associateID)
 
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_maintain + "getAssociateSkillRatings";
-    this.final_service_url = this.base_url_cloud_maintain + "getAssociateSkillRatings";
+    this.final_service_url = this.final_base_url_maintain + "getAssociateSkillRatings";
     console.log('########## - REST SERVICE CALL getAssociateSkillRatings = ' + this.final_service_url);
     return this.http.get(this.final_service_url,{params});
 
@@ -137,8 +136,7 @@ export class SharedService {
     console.log(updateProfileRequestModel );
 
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_maintain + "update-profile";
-    this.final_service_url = this.base_url_cloud_maintain + "update-profile";
+    this.final_service_url = this.final_base_url_maintain + "update-profile";
     console.log('########## - REST SERVICE CALL = update-profile' + this.final_service_url);
     return this.http.post(this.final_service_url, updateProfileRequestModel, this.options);
 
@@ -151,8 +149,7 @@ export class SharedService {
     .set('name',obtainedName)
 
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_search + "getAssociatesByName";
-    this.final_service_url = this.base_url_cloud_search + "getAssociatesByName";
+    this.final_service_url = this.base_url_local_search + "getAssociatesByName";
     console.log('########## - REST SERVICE CALL getAssociatesByName = ' + this.final_service_url);
     return this.http.get(this.final_service_url, {params});
   }
@@ -162,8 +159,7 @@ export class SharedService {
     .set('associateID',obtainedAssociateId)
 
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_search + "getAssociateByID";
-    this.final_service_url = this.base_url_cloud_search + "getAssociateByID";
+    this.final_service_url = this.final_base_url_search + "getAssociateByID";
     console.log('########## - REST SERVICE CALL getAssociateByID = ' + this.final_service_url);
     return this.http.get(this.final_service_url,{params});
   }
@@ -173,8 +169,7 @@ export class SharedService {
     .set('topic',obtainedTopic)
 
     this.final_service_url = "";
-    //this.final_service_url = this.base_url_local_search + "getAssociatesBySkill";
-    this.final_service_url = this.base_url_cloud_search + "getAssociatesBySkill";
+    this.final_service_url = this.final_base_url_search + "getAssociatesBySkill";
     console.log('########## - REST SERVICE CALL getAssociateByID = ' + this.final_service_url);
     return this.http.get(this.final_service_url,{params});
   }
